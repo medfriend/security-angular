@@ -1,0 +1,10 @@
+<app-router-icon-button
+  [icon]="action.icon"
+  [color]="action.color"
+  [size]="action.size"
+  [tooltip]="action.tooltip"
+  (click)="onActionClicked(action.identificator)"
+  *ngFor="let action of actions"
+  class="m-2"
+>
+</app-router-icon-button>

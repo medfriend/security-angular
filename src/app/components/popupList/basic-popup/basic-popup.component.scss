@@ -1,0 +1,35 @@
+.key-container {
+
+  mat-icon {
+    z-index: 0 !important;
+  }
+
+  mat-icon.active {
+    color: gray;
+    //transform: translateY(0.15rem);
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  mat-icon.deactive {
+    color: white;
+    transform: translateY(0rem);
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .referente-element {
+    background: white;
+    position: absolute;
+    color: black;
+    transform: translate(-150px, 45px);
+    opacity: 0;
+    transition: opacity 250ms ease, transform 250ms ease;
+    pointer-events: none;
+  }
+
+  .referente-element.showup {
+    z-index: 999 !important;
+    opacity: 1;
+    transform: translate(-150px, 35px);
+    pointer-events: auto;
+  }
+}

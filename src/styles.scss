@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+//TODO eliminar las depencias que quedaron volando de colores
+@import "colors";
+
+body{
+    font-family: 'Poppins', sans-serif;
+    margin: 0px;
+
+  hr {
+    border: none;
+    border-top: 2px solid $parent-icon;
+  }
+
+    &.no-scroll {
+      overflow: hidden; /* Bloquea el scroll vertical */
+      position: fixed; /* Fija la posición para evitar movimientos accidentales */
+      width: 100%;
+    }
+  }

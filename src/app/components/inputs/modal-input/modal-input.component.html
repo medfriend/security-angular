@@ -1,0 +1,35 @@
+<div class="form-group">
+  <div  class="form-control rounded-xl text-base">
+    <div class="flex flex-row tracking-tighter">
+      <div class="form-label first-letter:capitalize label">
+        {{placeholder}}
+      </div>
+      <div class="flex items-center ml-auto cursor-pointer">
+        <mat-icon
+          (click)="openModal()"
+          *ngIf="!disabled"
+        > search
+        </mat-icon>
+        <mat-icon
+          *ngIf="disabled"
+        > search
+        </mat-icon>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-basic-modal
+  [isVisible]="isModalVisible"
+  (onClose)="handleModalClose()"
+  [titlle]="label"
+>
+  <app-filter-table
+    [dataUri]="dataUri"
+    [filterKey]="filterKey"
+    [placeholder]="placeholder"
+    (selectedRow)="handlerSelectedRow($event)"
+    [tableColumns]="tableColumn"
+  >
+  </app-filter-table>
+</app-basic-modal>

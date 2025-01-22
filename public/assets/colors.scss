@@ -1,0 +1,64 @@
+// src/assets/colors.scss
+
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$warning-color: #ffc107;
+$info-color: #17a2b8;
+$light-color: #f8f9fa;
+$dark-color: #343a40;
+$navbar-color: #f8f9fa;
+$navbartext-color: #343a40;
+$navbarhover-color: #e9ecef;
+
+
+//input configuration
+$border-input: rgb(206, 215, 225);
+$background-input: rgb(253, 253, 253);
+
+$border-focus-input: rgb(0,88,224);
+$border-focus-shadow-input: rgb(218, 229, 250);
+
+$border-hover-input: rgb(159, 173, 193);
+
+$error-border-color: #d9534f;
+$error-box-shadow: 0 0 5px 2px rgba(217, 83, 79, 0.5);
+
+//header configuration
+$background-header: black;
+$background-hover-header: rgb(20,20,25);
+$color-header: white;
+
+//searchbar
+$icon-color: rgb(98, 98, 98);
+
+//controlPanel
+$color-panel-control: rgb(244, 244, 248);
+$text-color-panel-control: rgb(16, 16, 23);
+$icon-panel-control: rgb(121, 121, 121);
+$icon-container-hover: rgb(231, 231, 240);
+
+//user-list
+$background-user-list: rgb(231, 231, 240);
+
+//lateral-menu
+$lateral-menu-hover: rgb(241, 241, 246);
+$lateral-menu-boxshadow: rgb(249, 249, 248);
+
+//parent-menu
+$parent-icon: rgb(233, 233, 242);
+$parent-icon-color: rgb(16,16,23);
+
+//basic-button
+$basic-button: rgb(245, 245, 249);
+$basic-button-color: rgb(16,16,23);
+// Agrega más colores según sea necesario
+
+//autocompleteButton
+$autocomplete-icon: rgb(29,29,37);
+$autocomplete-input: rgb(79,105,141);
+
+//tabla
+$tabla-hover: rgb(239,239,249);
+$table-sun: rgb(253,169,22);

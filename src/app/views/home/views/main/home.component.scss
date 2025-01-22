@@ -1,0 +1,20 @@
+.layout {
+  display: grid;
+  grid-template-columns: 340px auto;
+
+  .sidebar {
+    overflow-y: auto;
+  }
+
+  .content {
+    background-color: #ffffff;
+   //overflow-x: auto;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 900px){
+  .layout {
+    display: block;
+  }
+}

@@ -1,0 +1,27 @@
+<div class="flex control-panel-container py-1 px-2 rounded-xl"
+     (mouseenter)="showPopUp(true)"
+     [ngClass]="{
+            'active': showPopup,
+            'deactive': !showPopup
+        }"
+>
+  <div
+    #controlPanelModule
+    class="text-sm font-medium control-panel-module">
+    {{ panelLabel }}
+  </div>
+  <div
+    class="action-container"
+    [class.active]="showPopup"
+    [class.deactive]="!showPopup"
+  >
+    <app-basic-popup
+      [isActive]="showPopup"
+      [translateX]="-80"
+      [translateY]="40"
+      [hidden]="!showPopup"
+    >
+      <ng-content></ng-content>
+    </app-basic-popup>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<app-basic-border *ngFor="let item of paginatedData">
+  <div class="mt-2 rounded-2xl tracking-tighter leading-tight px-1">
+    <div *ngFor="let column of columns">
+      <app-basic-collapsed
+        [label]="item[column.field]"
+        *ngIf="column.overflow"
+        [textSize]="'text-lg first-letter:capitalize'"
+      >
+        <hr>
+        <div *ngFor="let column of columns; let i = index" class="p-2 column-container mb-1">
+          <div class="flex flex-item items-center justify-between" >
+            <!-- Header -->
+            <div>
+              {{ column.header }}
+            </div>
+
+            <!-- Content -->
+            <div class="text-gray-500">
+              <ng-container [ngSwitch]="column.foldable">
+                <!-- Caso desplegable -->
+                <app-actionPanel
+                  *ngSwitchCase="true"
+                  [panelLabel]="item[column.field]"
+                >
+                  <app-table-list [id]="item[idKey]"></app-table-list>
+                </app-actionPanel>
+
+                <!-- Caso por defecto -->
+                <span *ngSwitchDefault>
+          <!-- Lógica para fechas -->
+          <ng-container *ngIf="column.date; else defaultLogic">
+            {{tableService.convertDate(item[column.field]) }}
+          </ng-container>
+
+                  <!-- Lógica para valores no fecha -->
+          <ng-template #defaultLogic>
+            <!-- Booleano -->
+            <ng-container *ngIf="tableService.isBoolean(item[column.field]); else stringTemplate">
+              <mat-icon
+                *ngIf="item[column.field]; else inactiveIcon"
+                class="sun"
+              >
+                wb_sunny
+              </mat-icon>
+              <ng-template #inactiveIcon>
+                <mat-icon class="moon">dark_mode</mat-icon>
+              </ng-template>
+            </ng-container>
+
+            <!-- Texto o cadena por defecto -->
+            <ng-template #stringTemplate>
+              {{ item[column.field] }}
+            </ng-template>
+          </ng-template>
+        </span>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+      </app-basic-collapsed>
+
+    </div>
+  </div>
+</app-basic-border>
+
+<app-basic-pagination
+  [data]="data"
+  [paginated]="paginated"
+  (paginatedDataChange)="handlerPagination($event)"
+>
+</app-basic-pagination>

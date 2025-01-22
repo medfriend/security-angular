@@ -1,0 +1,79 @@
+@import 'colors';
+
+.form {
+  background: #fff;
+  border-radius: 8px;
+  width: 100%; // Limita el ancho máximo en pantallas grandes
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .form-label {
+      margin: 0.5rem;
+    }
+
+    .error-message {
+      color: $danger-color;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      margin-left: 0.5rem;
+    }
+
+    .error-message small {
+      display: block;
+      line-height: 1.4;
+    }
+  }
+
+  // Media Queries para pantallas pequeñas
+  @media (max-width: 768px) {
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .form-group {
+      .form-label {
+        font-size: 0.875rem;
+      }
+
+      .form-control {
+        font-size: 1rem;
+      }
+    }
+
+    .button-container .btn .btn-cancelar {
+      font-size: 0.875rem;
+      padding: 0.7rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    .form-group {
+      .form-label {
+        font-size: 0.8rem;
+      }
+
+      .form-control {
+        font-size: 0.9rem;
+      }
+    }
+
+    .button-container .btn .btn-cancelar {
+      font-size: 0.5rem;
+      padding: 0.6rem;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<div *ngIf="subjections.length > 0; else noData2">
+    <app-basic-autocomplete
+      [placeholder]="placeholder"
+      [suggestions]="subjections"
+      [onSelectHandler]="filter()">
+    </app-basic-autocomplete>
+</div>
+
+<ng-template #noData2>
+    <p>No hay datos disponibles. Haz clic en "Cargar".</p>
+</ng-template>
+
+<div *ngIf="dataSource.length > 0; else noData">
+    <selectable-table
+      [columns]="columns"
+      [data]="dataSource"
+      (rowSelected)="handlerSelected($event)"
+    >
+    </selectable-table>
+</div>
+
+<div class="button-container grid grid-cols-1 gap-4 w-25 justify-end ml-auto">
+  <button
+    class="btn rounded-xl"
+    type="button"
+    (click)="handlerButton()"
+  > Seleccionar </button>
+</div>
+
+<ng-template #noData>
+    <p>No hay datos disponibles. Haz clic en "Cargar".</p>
+</ng-template>

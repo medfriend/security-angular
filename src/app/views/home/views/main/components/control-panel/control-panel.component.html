@@ -1,0 +1,57 @@
+<div class="flex flex-row p-2 container text-sm">
+  <div class="flex items-center">
+<!--     Panel principal -->
+    <div>
+      <app-actionPanel [panelLabel]="'Panel de Control'">
+        <app-basic-list [menuItems]="menus"></app-basic-list>
+      </app-actionPanel>
+    </div>
+
+    <mat-icon class="icon">
+      keyboard_arrow_right
+    </mat-icon>
+
+    <!-- Rutas dinámicas -->
+    <div *ngFor="let route of routes; let isLast = last; let i = index" class="flex items-center" >
+      <ng-container *ngIf="route.hasActionPanel; else showRouteName">
+
+        <app-actionPanel [panelLabel]="route.name">
+          <ng-container *ngIf="route.actionPanelComponent">
+            <ng-container
+              *ngComponentOutlet="route.actionPanelComponent.component;
+              injector: getInjector(route.actionPanelComponent.injectors)">
+            </ng-container>
+          </ng-container>
+        </app-actionPanel>
+
+      </ng-container>
+
+      <!-- Mostrar el nombre de la ruta si no tiene panel -->
+      <ng-template #showRouteName>
+        <div
+          (click)="navegateTo(route.name, i, isLast)"
+          class="sub-control-panel"
+        >
+          <a *ngIf="!isLast">
+            {{ route.name }}
+          </a>
+          <a *ngIf="isLast">
+
+            {{ getLastParam(route.name) }}
+          </a>
+        </div>
+
+        <ng-container *ngIf="parseParams(route.name)">
+          <div *ngFor="let param of parseParams(route.name)" class="bg-white p-1 rounded-md ml-1">
+            {{ param.key }} {{ param.value }}
+          </div>
+        </ng-container>
+      </ng-template>
+
+      <!-- Ícono de separación si no es el último -->
+      <mat-icon class="icon" *ngIf="!isLast">
+        keyboard_arrow_right
+      </mat-icon>
+    </div>
+  </div>
+</div>
