@@ -4,6 +4,7 @@ import {PermissionsGuard} from "../../../core/guard/permission.guard";
 import {CrearMenuComponent} from "./pages/crear-menu/crear-menu.component";
 import {ActualizarMenuComponent} from "./pages/actualizar-menu/actualizar-menu.component";
 import {EliminarMenuComponent} from "./pages/eliminar-menu/eliminar-menu.component";
+import {SubMenuAdminComponent} from "../submenu/submenu.component";
 
 export const ADMIN_MENU_ROUTE: Routes = [
   {
@@ -15,4 +16,10 @@ export const ADMIN_MENU_ROUTE: Routes = [
       { path: 'eliminar', component: EliminarMenuComponent, canActivate: [PermissionsGuard] },
     ]
   },
+  {
+    path: 'administracion-submenu',
+    children: [
+      { path: '', component: SubMenuAdminComponent, canActivate: [PermissionsGuard] },
+    ]
+  }
 ]

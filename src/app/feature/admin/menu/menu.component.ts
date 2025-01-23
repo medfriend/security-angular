@@ -88,7 +88,7 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
 
   actionHandler(event: any, row:any){
     this.router.navigate(
-      [`/home/asignacion-${event}`],
+      [`/home/${event}`],
       { queryParams: { menu: row.MenuID } }
     );
   }

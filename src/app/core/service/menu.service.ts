@@ -29,4 +29,8 @@ export class MenuService {
   getMenuById(id: number){
     return this.http.get<Menu>(`${this.apiUrl}/${id}`);
   }
+
+  getChildByParentId(id: string){
+    return this.http.get<Menu[]>(`${this.apiUrl}/childs-parent/${id}`);
+  }
 }
