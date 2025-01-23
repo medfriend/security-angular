@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {CookieServiceUtil} from "../cookie/cookie.service";
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -7,18 +8,30 @@ const isBrowser = typeof window !== 'undefined';
 })
 export class StorageService {
 
-  constructor() {
+  constructor(
+    private cookieService: CookieServiceUtil,
+  ) {
     console.log(isBrowser)
   }
 
   // Set a value in localStorage
   setItem(key: string, value: any): void {
-    localStorage.setItem(key, JSON.stringify(value));
+
+    const stringValue = JSON.stringify(value);
+
+    this.cookieService.setCookie(key, stringValue);
+    localStorage.setItem(key, stringValue);
   }
 
   // Get a value from localStorage
   getItem<T>(key: string): T | null {
-    const item = localStorage.getItem(key);
+    let item = localStorage.getItem(key);
+
+    if (item === null)  {
+      item = this.cookieService.getCookie(key)
+      this.setItem(key, JSON.parse(item));
+    }
+
     return item ? JSON.parse(item) : null;
   }
 

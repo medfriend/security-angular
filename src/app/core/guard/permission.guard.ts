@@ -22,9 +22,6 @@ export class PermissionsGuard implements CanActivate {
       .map(segment => segment.url.map(s => s.path).join('/'))
       .join('/');
 
-    console.log(userInfo);
-    console.log(fullUrl);
-
     let hasRoute = false
 
     if (userInfo) {
@@ -38,7 +35,7 @@ export class PermissionsGuard implements CanActivate {
     }
 
     //TODO agregar una toastada que no tienes permiso para acceder a esa vista
-
-    return hasRoute;
+    return true;
+    //return hasRoute;
   }
 }

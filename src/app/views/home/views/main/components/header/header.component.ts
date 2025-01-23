@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { AuthState } from '../../../../../../store/auth/auth.state';
 import { StorageService } from '../../../../../../util/localstorage/localstorage.service';
 import {sharedModules} from "../../../../../../shared/shared.module";
+import {enviroment} from "../../../../../../enviroment/service.enviroment";
 
 @Component({
   selector: 'app-header',
@@ -23,6 +24,8 @@ import {sharedModules} from "../../../../../../shared/shared.module";
 export class HeaderComponent implements OnInit {
   isUserArrowActive: boolean = false;
   username = ""
+
+  enviromentP = enviroment
 
   constructor(
     private router: Router,
@@ -56,6 +59,10 @@ export class HeaderComponent implements OnInit {
   logoutHandler(){
     this.store.dispatch(clearToken())
     this.localstorageService.clear()
-    this.router.navigate(['/login'])
+
+    const prefix = this.enviromentP.https ? 'https://' : 'http://'
+
+    window.location.href = prefix + this.enviromentP.admin + '/login'
+
   }
 }
