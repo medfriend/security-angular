@@ -22,7 +22,12 @@ export class CookieServiceUtil {
     this.cookieService.delete(name, '/', enviroment.domain);
   }
 
+  clearCookie(): void {
+    this.cookieService.deleteAll('/', enviroment.domain);
+  }
+
   checkCookie(name: string): boolean {
     return this.cookieService.check(name);
   }
 }
+
